@@ -1,6 +1,6 @@
 import React from 'react';
 import * as d3 from 'd3';
-import PlotD3 from './PlotD3';
+import PlotSVG from './PlotSVG';
 import './App.css';
 
 // Application:  A grid of performance tests.
@@ -11,7 +11,7 @@ function App() {
     }
     return (
         <div className="App">
-            <PlotD3 width={400} height={400} data={data} size={2} opacity={0.5}/>
+            <PlotSVG width={400} height={400} data={data} size={2} opacity={0.5}/>
         </div>
     );
 }
