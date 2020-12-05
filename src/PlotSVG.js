@@ -1,7 +1,7 @@
 import React from 'react';
 import * as d3 from 'd3';
 
-class PlotD3 extends React.Component {
+class PlotSVG extends React.Component {
     
     // Constructor:  Creates reference and scales.
     constructor( props ) {
@@ -47,4 +47,4 @@ class PlotD3 extends React.Component {
     render() { return <div ref={this.svg}></div> }
 }
 
-export default PlotD3;
+export default PlotSVG;

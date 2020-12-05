@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import PlotSVG from './PlotSVG';
 
-test('renders learn react link', () => {
-  render(<App />);
+test('renders link', () => {
+  render(<PlotSVG />);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
