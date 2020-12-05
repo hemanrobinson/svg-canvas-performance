@@ -1,6 +1,8 @@
 import React from 'react';
 import * as d3 from 'd3';
+import './PlotSVG.css';
 
+// Scatter plot in an SVG element.
 class PlotSVG extends React.Component {
     
     // Constructor:  Creates reference and scales.
@@ -17,18 +19,17 @@ class PlotSVG extends React.Component {
     
     // Draws on mounting.
     componentDidMount() {
-        this.drawPoints( this.props.data );
+        this.draw( this.props.data );
     }
     
     // Draws the scatter plot.
-    drawPoints( data )  {
+    draw( data )  {
         
         // Create the SVG element.
         const svg = d3.select( this.svg.current )
-            .append( "svg")
+            .append( "svg" )
             .attr( "width", this.props.width )
-            .attr( "height", this.props.height )
-            .style( "border", "1px solid black" );
+            .attr( "height", this.props.height );
         
         // Draw the points.
         let t0 = Date.now();
@@ -42,6 +43,7 @@ class PlotSVG extends React.Component {
             .style( "fill", "none" )
             .style( "stroke", "black" )
         this.time = Date.now() - t0;
+        console.log( "svg:    " + this.time );
     }
     
     render() { return <div ref={this.svg}></div> }
