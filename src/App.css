@@ -1,8 +1,15 @@
-/* Application: Grid layout. */
-.App {
+/* Application: layouts. */
+div {
     text-align: center;
+    gap: 10px;
+}
+.Column {
+    display: flex;
+    flex-direction: column;
+}
+.Grid {
     display: grid;
     grid-template-columns: repeat( 2, 1fr );
-    gap: 10px;
     grid-auto-rows: minmax( 100px, auto );
+    justify-items: center;
 }
