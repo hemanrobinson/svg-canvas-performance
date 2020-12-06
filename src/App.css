@@ -10,6 +10,12 @@ div {
 .Grid {
     display: grid;
     grid-template-columns: repeat( 2, 1fr );
-    grid-auto-rows: minmax( 100px, auto );
     justify-items: center;
+}
+.GridControls {
+    display: grid;
+    grid-template-columns: auto 200px;
+    align-items: center;
+    justify-items: right;
+    justify-content: center;
 }

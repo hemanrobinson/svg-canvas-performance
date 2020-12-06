@@ -13,6 +13,11 @@ class PlotCanvas extends React.Component {
         this.canvasRef = React.createRef();
         this.xScale = d3.scaleLinear().domain([ 0, 1 ]).range([ 0, this.width ]);
         this.yScale = d3.scaleLinear().domain([ 0, 1 ]).range([ this.height, 0 ]);
+        this.state = {
+            data: props.data,
+            size: props.size,
+            opacity: props.opacity
+        }
     }
     
     // Draws on mounting.
@@ -25,7 +30,8 @@ class PlotCanvas extends React.Component {
         
         // Initialization.
         let { width, height, canvasRef, xScale, yScale } = this;
-        let { data, size, shape, opacity } = this.props;
+        let { shape } = this.props;
+        let { data, size, opacity } = this.state;
         
         // Initialization.
         let canvas = canvasRef.current,
@@ -60,7 +66,7 @@ class PlotCanvas extends React.Component {
         // Draw the time.
         g.fillStyle = "#000000";
         g.font = "16px sans-serif";
-        g.fillText( "Canvas " + shape + "s: " + t1 + " msec", width / 2, height - 10 );
+        g.fillText( "Canvas " + shape + "s: " + t1 + " msec", 10, height - 10 );
     }
     
     render() { return <canvas width={this.width} height={this.height} ref={this.canvasRef}></canvas> }
