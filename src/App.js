@@ -37,9 +37,9 @@ class App extends React.Component {
                     <Slider defaultValue={ 4 } step={ 1 } min={ 0 } max={ 10 }
                         valueLabelDisplay="auto" onChangeCommitted={ this.setSize } marks />
                     <label>Points:</label>
-                    <Slider defaultValue={ 3 } step={ 1 } min={ 0 } max={ 5 }
+                    <Slider defaultValue={ 9 } step={ 1 } min={ 0 } max={ 15 }
                         valueLabelDisplay="auto" onChangeCommitted={ this.setData } marks
-                        valueLabelFormat={( value ) => ( 10 ** value )} />
+                        valueLabelFormat={( value ) => App.getPower( value )} />
                     <label>Opacity:</label>
                     <Slider defaultValue={ 0.4 } step={ 0.01 } min={ 0 } max={ 1 }
                         valueLabelDisplay="auto" onChangeCommitted={ this.setOpacity } />
@@ -67,6 +67,12 @@ class App extends React.Component {
         that.plotRef3.current.setState( state );
     }
     
+    // Returns "nice" exponential value: 1, 2, 5, etc.
+    static getPower = ( value ) => {
+        let m = (( value % 3 ) === 0 ) ? 1 : (( value % 3 ) === 1 ) ? 2 : 5;
+        return m * ( 10 ** Math.floor( value / 3 ));
+    }
+    
     // Assigns size.
     setSize = ( event, newValue ) => {
         App.setPlotStates( this, { size: newValue });
@@ -79,7 +85,7 @@ class App extends React.Component {
     
     // Assigns data.
     setData = ( event, newValue ) => {
-        this.data = App.generateData( 10 ** newValue );
+        this.data = App.generateData( App.getPower( newValue ));
         App.setPlotStates( this, { data: this.data });
     }
 }
