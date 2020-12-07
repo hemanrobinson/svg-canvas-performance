@@ -16,60 +16,62 @@ class PlotCanvas extends React.Component {
         this.state = {
             data: props.data,
             size: props.size,
+            shape: props.shape,
             opacity: props.opacity
         }
     }
     
     // Draws on mounting.
     componentDidMount() {
-        this.draw();
+        PlotCanvas.draw( this );
+    }
+                         
+    // Render and return the component.
+    render() {
+        PlotCanvas.draw( this );
+        return <canvas width={this.width} height={this.height} ref={this.canvasRef}></canvas>
     }
     
     // Draws the scatter plot and the time.
-    draw() {
+    static draw( that ) {
         
         // Initialization.
-        let { width, height, canvasRef, xScale, yScale } = this;
-        let { shape } = this.props;
-        let { data, size, opacity } = this.state;
+        let { width, height, canvasRef, xScale, yScale } = that,
+            { data, size, shape, opacity } = that.state;
         
-        // Initialization.
-        let canvas = canvasRef.current,
-            g = canvas.getContext( "2d" ),
-            t = g.globalAlpha;
+        // If the canvas has been created, draw the plot.
+        let canvas = canvasRef.current;
+        if( canvas ) {
         
-        // Draw the points.
-        let t0 = Date.now();
-        g.clearRect( 0, 0, width, height );
-        g.lineWidth = 1;
-        g.strokeStyle = "#000000";
-        g.globalAlpha = opacity;
-        g.beginPath();
-        if( shape === "circle" ) {
+            // Draw the points.  +0.5 minimizes anti-aliasing.
+            let t0 = Date.now(),
+                g = canvas.getContext( "2d" ),
+                oldAlpha = g.globalAlpha;
+            g.clearRect( 0, 0, width, height );
+            g.lineWidth = 1;
+            g.strokeStyle = "#000000";
+            g.globalAlpha = opacity;
+            g.beginPath();
             data.forEach( datum => {
                 let x = Math.round( xScale( datum[ 0 ])) + 0.5,
                     y = Math.round( yScale( datum[ 1 ])) + 0.5;
-                g.moveTo( x + size / 2, y );
-                g.arc( x, y, size / 2, 0, 2 * Math.PI, true );
+                if( shape === "circle" ) {
+                    g.moveTo( x + size / 2, y );
+                    g.arc( x, y, size / 2, 0, 2 * Math.PI, true );
+                } else {
+                    g.strokeRect( x, y, size, size );
+                }
             });
-        } else {
-            data.forEach( datum => {
-                let x = Math.round( xScale( datum[ 0 ])) + 0.5,
-                    y = Math.round( yScale( datum[ 1 ])) + 0.5;
-                g.strokeRect( x, y, size, size );
-            });
+            g.stroke();
+            g.globalAlpha = oldAlpha;
+            let t1 = Date.now() - t0;
+                             
+            // Draw the time.
+            g.fillStyle = "#000000";
+            g.font = "16px sans-serif";
+            g.fillText( "Canvas " + shape + "s: " + t1 + " msec", 10, height - 10 );
         }
-        g.stroke();
-        g.globalAlpha = t;
-        let t1 = Date.now() - t0;
-                         
-        // Draw the time.
-        g.fillStyle = "#000000";
-        g.font = "16px sans-serif";
-        g.fillText( "Canvas " + shape + "s: " + t1 + " msec", 10, height - 10 );
     }
-    
-    render() { return <canvas width={this.width} height={this.height} ref={this.canvasRef}></canvas> }
 }
 
 export default PlotCanvas;

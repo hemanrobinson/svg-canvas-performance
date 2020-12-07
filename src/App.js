@@ -19,57 +19,10 @@ class App extends React.Component {
         this.plotRef3 = React.createRef();
     
         // Generate data.
-        this.data = this.generateData( 1000 );
+        this.data = App.generateData( 1000 );
     }
     
-    // Redraws all plots.
-    redraw = () => {
-        this.plotRef0.current.draw();
-        this.plotRef1.current.draw();
-        this.plotRef2.current.draw();
-        this.plotRef3.current.draw();
-    }
-    
-    // Assigns size.
-    setSize = ( event, newValue ) => {
-        this.plotRef0.current.setState({ size: newValue });
-        this.plotRef1.current.setState({ size: newValue });
-        this.plotRef2.current.setState({ size: newValue });
-        this.plotRef3.current.setState({ size: newValue });
-        this.redraw();
-    }
-    
-    // Assigns opacity.
-    setOpacity = ( event, newValue ) => {
-        this.plotRef0.current.setState({ opacity: newValue });
-        this.plotRef1.current.setState({ opacity: newValue });
-        this.plotRef2.current.setState({ opacity: newValue });
-        this.plotRef3.current.setState({ opacity: newValue });
-        this.redraw();
-    }
-    
-    // Generates random normal data.
-    generateData = ( newValue ) => {
-        let data = [],
-            f = d3.randomNormal( 0.5, 0.1 ),
-            n = newValue;
-        for( let i = 0; ( i < n ); i++ ) {
-            data[ i ] = [ f(), f()];
-        }
-        return data;
-    }
-    
-    // Assigns data.
-    setData = ( event, newValue ) => {
-        let newData = this.generateData( 10 ** newValue );
-        this.plotRef0.current.setState({ data: newData });
-        this.plotRef1.current.setState({ data: newData });
-        this.plotRef2.current.setState({ data: newData });
-        this.plotRef3.current.setState({ data: newData });
-        this.redraw();
-    }
-    
-    // Return the App.
+    // Render and return the App.
     render() {
         return (
             <div className="Column">
@@ -81,37 +34,53 @@ class App extends React.Component {
                 </div>
                 <div className="GridControls">
                     <label>Size:</label>
-                    <Slider
-                        defaultValue={ 4 }
-                        step={ 1 }
-                        min={ 0 }
-                        max={ 10 }
-                        valueLabelDisplay="auto"
-                        marks
-                        onChangeCommitted={ this.setSize }
-                    />
-                    <label>Opacity:</label>
-                    <Slider
-                        defaultValue={ 0.4 }
-                        step={ 0.01 }
-                        min={ 0 }
-                        max={ 1 }
-                        valueLabelDisplay="auto"
-                        onChangeCommitted={ this.setOpacity }
-                    />
+                    <Slider defaultValue={ 4 } step={ 1 } min={ 0 } max={ 10 }
+                        valueLabelDisplay="auto" onChangeCommitted={ this.setSize } marks />
                     <label>Points:</label>
-                    <Slider
-                        defaultValue={ 3 }
-                        step={ 1 }
-                        min={ 0 }
-                        max={ 5 }
-                        valueLabelFormat={( value ) => ( 10 ** value )}
-                        valueLabelDisplay="auto"
-                        onChangeCommitted={ this.setData }
-                    />
+                    <Slider defaultValue={ 3 } step={ 1 } min={ 0 } max={ 5 }
+                        valueLabelDisplay="auto" onChangeCommitted={ this.setData } marks
+                        valueLabelFormat={( value ) => ( 10 ** value )} />
+                    <label>Opacity:</label>
+                    <Slider defaultValue={ 0.4 } step={ 0.01 } min={ 0 } max={ 1 }
+                        valueLabelDisplay="auto" onChangeCommitted={ this.setOpacity } />
                 </div>
             </div>
         );
+    }
+    
+    // Generates random normal data.
+    static generateData = ( newValue ) => {
+        let data = [],
+            f = d3.randomNormal( 0.5, 0.1 ),
+            n = newValue;
+        for( let i = 0; ( i < n ); i++ ) {
+            data[ i ] = [ f(), f()];
+        }
+        return data;
+    }
+    
+    // Assigns state to all plots.
+    static setPlotStates = ( that, state ) => {
+        that.plotRef0.current.setState( state );
+        that.plotRef1.current.setState( state );
+        that.plotRef2.current.setState( state );
+        that.plotRef3.current.setState( state );
+    }
+    
+    // Assigns size.
+    setSize = ( event, newValue ) => {
+        App.setPlotStates( this, { size: newValue });
+    }
+    
+    // Assigns opacity.
+    setOpacity = ( event, newValue ) => {
+        App.setPlotStates( this, { opacity: newValue });
+    }
+    
+    // Assigns data.
+    setData = ( event, newValue ) => {
+        this.data = App.generateData( 10 ** newValue );
+        App.setPlotStates( this, { data: this.data });
     }
 }
 

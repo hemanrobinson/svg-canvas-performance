@@ -16,19 +16,43 @@ class PlotSVG extends React.Component {
         this.state = {
             data: props.data,
             size: props.size,
+            shape: props.shape,
             opacity: props.opacity
         }
     }
     
+    // Draws on mounting.
+    componentDidMount() {
+        PlotSVG.create( this );
+        PlotSVG.draw( this );
+    }
+    
+    // Sets state.  Recreates svg elements iff data changed.
+    setState( newState ) {
+        if( newState.data !== undefined ) {
+            this.state.data = newState.data;
+            PlotSVG.create( this );
+        }
+        super.setState( newState );
+    }
+    
+    // Render and return the component.
+    render() {
+        PlotSVG.draw( this );
+        return <svg width={this.width} height={this.height} ref={this.svgRef}></svg>
+    }
+    
     // Creates SVG elements.
-    createSVGElements() {
+    static create( that ) {
     
         // Create the points.
-        const svg = d3.select( this.svgRef.current );
-        let sgvShape = ( this.props.shape === "circle" ) ? "circle" : "rect";
+        const svg = d3.select( that.svgRef.current );
+        let sgvShape = ( that.state.shape === "circle" ) ? "circle" : "rect";
         svg.selectAll( sgvShape ).remove();
-        this.state.data.forEach(() => {
-            svg.append( sgvShape );
+        that.state.data.forEach(() => {
+            svg.append( sgvShape )
+                .style( "fill", "none" )
+                .style( "stroke", "black" );
         });
         
         // Create the time.
@@ -36,23 +60,14 @@ class PlotSVG extends React.Component {
         svg.append( "text" );
     }
     
-    // Draws on mounting.
-    componentDidMount() {
-        this.draw();
-    }
-    
     // Draws the scatter plot and the time.
-    draw() {
+    static draw( that ) {
         
         // Initialization.
-        let { height, svgRef, xScale, yScale } = this;
-        let { shape } = this.props;
-        let { data, size, opacity } = this.state;
+        let { height, svgRef, xScale, yScale } = that,
+            { data, size, shape, opacity } = that.state;
         
-        // Re-create SVG elements, in case the data changed.
-        this.createSVGElements();
-        
-        // Draw the points.
+        // Draw the points.  +0.5 minimizes anti-aliasing.
         let t0 = Date.now();
         const svg = d3.select( svgRef.current );
         if( shape === "circle" ) {
@@ -62,8 +77,6 @@ class PlotSVG extends React.Component {
                 .attr( "cy", ( datum ) => Math.round( yScale( datum[ 1 ])) + 0.5 )
                 .attr( "r", size / 2 )
                 .style( "opacity", opacity )
-                .style( "fill", "none" )
-                .style( "stroke", "black" )
         } else {
             svg.selectAll( "rect" )
                 .data( data )
@@ -72,8 +85,6 @@ class PlotSVG extends React.Component {
                 .attr( "width", size )
                 .attr( "height", size )
                 .style( "opacity", opacity )
-                .style( "fill", "none" )
-                .style( "stroke", "black" )
         }
         let t1 = Date.now() - t0;
                       
@@ -82,11 +93,6 @@ class PlotSVG extends React.Component {
             .attr( "x", 10 )
             .attr( "y", height - 10 )
             .text( "SVG " + shape + "s: " + t1 + "  msec" );
-    }
-    
-    // Return the component.
-    render() {
-        return <svg width={this.width} height={this.height} ref={this.svgRef}></svg>
     }
 }
 
