@@ -1,71 +1,57 @@
-import React from 'react';
+import React, { useRef, useEffect }  from 'react';
 import * as d3 from 'd3';
 import './PlotCanvas.css';
 
 // Scatter plot in a Canvas element.
-class PlotCanvas extends React.Component {
+const PlotCanvas = ( props ) => {
     
-    // Constructor:  Creates reference and scales.
-    constructor( props ) {
-        super( props );
-        this.width = 400;
-        this.height = 400;
-        this.canvasRef = React.createRef();
-        this.xScale = d3.scaleLinear().domain([ 0, 1 ]).range([ 0, this.width ]);
-        this.yScale = d3.scaleLinear().domain([ 0, 1 ]).range([ this.height, 0 ]);
-    }
+    // Create reference and scales.
+    const width = 400, height = 400;
+    let ref = useRef(),
+        xScale = d3.scaleLinear().domain([ 0, 1 ]).range([ 0, width ]),
+        yScale = d3.scaleLinear().domain([ 0, 1 ]).range([ height, 0 ]),
+        { shape, data, size, opacity } = props;
     
-    // Draws on mounting.
-    componentDidMount() {
-        PlotCanvas.draw( this );
-    }
+    // Hook to draw on mounting, or on any other lifecycle update.
+    useEffect(() => {
+        PlotCanvas.draw( width, height, ref, xScale, yScale, shape, data, size, opacity );
+    });
                          
-    // Render and return the component.
-    render() {
-        PlotCanvas.draw( this );
-        return <canvas width={this.width} height={this.height} ref={this.canvasRef}></canvas>
-    }
+    // Return the component.
+    return <canvas width={width} height={height} ref={ref}></canvas>;
+}
+
+// Draws the points and the time.
+PlotCanvas.draw = ( width, height, ref, xScale, yScale, shape, data, size, opacity ) => {
     
-    // Draws the scatter plot and the time.
-    static draw( that ) {
-        
-        // Initialization.
-        let { width, height, canvasRef, xScale, yScale } = that,
-            { data, size, shape, opacity } = that.props;
-        
-        // If the canvas has been created, draw the plot.
-        let canvas = canvasRef.current;
-        if( canvas ) {
-        
-            // Draw the points.  +0.5 minimizes anti-aliasing.
-            let t0 = Date.now(),
-                g = canvas.getContext( "2d" ),
-                oldAlpha = g.globalAlpha;
-            g.clearRect( 0, 0, width, height );
-            g.lineWidth = 1;
-            g.strokeStyle = "#000000";
-            g.globalAlpha = opacity;
-            g.beginPath();
-            data.forEach( datum => {
-                let x = Math.round( xScale( datum[ 0 ])) + 0.5,
-                    y = Math.round( yScale( datum[ 1 ])) + 0.5;
-                if( shape === "circle" ) {
-                    g.moveTo( x + size / 2, y );
-                    g.arc( x, y, size / 2, 0, 2 * Math.PI, true );
-                } else {
-                    g.strokeRect( x, y, size, size );
-                }
-            });
-            g.stroke();
-            g.globalAlpha = oldAlpha;
-            let t1 = Date.now() - t0;
-                             
-            // Draw the time.
-            g.fillStyle = "#000000";
-            g.font = "16px sans-serif";
-            g.fillText( "Canvas " + shape + "s: " + t1 + " msec", 10, height - 10 );
+    // Draw the points.  +0.5 minimizes anti-aliasing.
+    let t0 = Date.now(),
+        canvas = ref.current,
+        g = canvas.getContext( "2d" ),
+        oldAlpha = g.globalAlpha;
+    g.clearRect( 0, 0, width, height );
+    g.lineWidth = 1;
+    g.strokeStyle = "#000000";
+    g.globalAlpha = opacity;
+    g.beginPath();
+    data.forEach( datum => {
+        let x = Math.round( xScale( datum[ 0 ])) + 0.5,
+            y = Math.round( yScale( datum[ 1 ])) + 0.5;
+        if( shape === "circle" ) {
+            g.moveTo( x + size / 2, y );
+            g.arc( x, y, size / 2, 0, 2 * Math.PI, true );
+        } else {
+            g.strokeRect( x, y, size, size );
         }
-    }
+    });
+    g.stroke();
+    g.globalAlpha = oldAlpha;
+    let t1 = Date.now() - t0;
+                     
+    // Draw the time.
+    g.fillStyle = "#000000";
+    g.font = "16px sans-serif";
+    g.fillText( "Canvas " + shape + "s: " + t1 + " msec", 10, height - 10 );
 }
 
 export default PlotCanvas;

@@ -16,7 +16,7 @@ class App extends React.Component {
     
     // Render and return the App.
     render() {
-        const { data, size, opacity } = this.state;
+        const { size, data, opacity } = this.state;
         return (
             <div className="Column">
                 <div className="Grid">
