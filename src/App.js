@@ -10,13 +10,13 @@ const App = () => {
     
     // Create state.
     const [ size, setSize ] = useState( 4 );
-    const [ data, setData ] = useState( App.generateData( App.getPower( 9 )));
+    const [ data, setData ] = useState( App.getData( App.getPower( 9 )));
     const [ opacity, setOpacity ] = useState( 0.4 );
     
     // Return the App.
     return (
         <div className="Column">
-            <div className="Grid">
+            <div className="GridPlots">
                 <PlotCanvas shape={"circle"} size={size} data={data} opacity={opacity} />
                 <PlotCanvas shape={"square"} size={size} data={data} opacity={opacity} />
                 <PlotSVG    shape={"circle"} size={size} data={data} opacity={opacity} />
@@ -30,7 +30,7 @@ const App = () => {
                 <label>Points:</label>
                 <Slider defaultValue={ 9 } step={ 1 } min={ 0 } max={ 15 }
                     valueLabelDisplay="auto" marks valueLabelFormat={( value ) => App.getPower( value )}
-                    onChangeCommitted={( event, value ) => setData( App.generateData( App.getPower( value )))} />
+                    onChangeCommitted={( event, value ) => setData( App.getData( App.getPower( value )))} />
                 <label>Opacity:</label>
                 <Slider defaultValue={ 0.4 } step={ 0.01 } min={ 0 } max={ 1 }
                     valueLabelDisplay="auto"
@@ -41,7 +41,7 @@ const App = () => {
 }
     
 // Generates random normal data.
-App.generateData = ( newValue ) => {
+App.getData = ( newValue ) => {
     let data = [],
         f = d3.randomNormal( 0.5, 0.1 ),
         n = newValue;
@@ -51,10 +51,10 @@ App.generateData = ( newValue ) => {
     return data;
 }
     
-// Returns "nice" power of specified value: 1, 2, 5, 10, etc.
-App.getPower = ( value ) => {
-    let m = (( value % 3 ) === 0 ) ? 1 : (( value % 3 ) === 1 ) ? 2 : 5;
-    return m * ( 10 ** Math.floor( value / 3 ));
+// Returns "nice" power of ten, rounded to:  1, 2, 5, 10, 20, 50, etc.
+App.getPower = ( exp ) => {
+    let m = (( exp % 3 ) === 0 ) ? 1 : (( exp % 3 ) === 1 ) ? 2 : 5;
+    return m * ( 10 ** Math.floor( exp / 3 ));
 }
 
 export default App;
