@@ -13,12 +13,6 @@ class PlotCanvas extends React.Component {
         this.canvasRef = React.createRef();
         this.xScale = d3.scaleLinear().domain([ 0, 1 ]).range([ 0, this.width ]);
         this.yScale = d3.scaleLinear().domain([ 0, 1 ]).range([ this.height, 0 ]);
-        this.state = {
-            data: props.data,
-            size: props.size,
-            shape: props.shape,
-            opacity: props.opacity
-        }
     }
     
     // Draws on mounting.
@@ -37,7 +31,7 @@ class PlotCanvas extends React.Component {
         
         // Initialization.
         let { width, height, canvasRef, xScale, yScale } = that,
-            { data, size, shape, opacity } = that.state;
+            { data, size, shape, opacity } = that.props;
         
         // If the canvas has been created, draw the plot.
         let canvas = canvasRef.current;

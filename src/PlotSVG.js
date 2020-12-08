@@ -13,12 +13,6 @@ class PlotSVG extends React.Component {
         this.svgRef = React.createRef();
         this.xScale = d3.scaleLinear().domain([ 0, 1 ]).range([ 0, this.width ]);
         this.yScale = d3.scaleLinear().domain([ 0, 1 ]).range([ this.height, 0 ]);
-        this.state = {
-            data: props.data,
-            size: props.size,
-            shape: props.shape,
-            opacity: props.opacity
-        }
     }
     
     // Draws on mounting.
@@ -27,17 +21,9 @@ class PlotSVG extends React.Component {
         PlotSVG.draw( this );
     }
     
-    // Sets state.  Recreates svg elements iff data changed.
-    setState( newState ) {
-        if( newState.data !== undefined ) {
-            this.state.data = newState.data;
-            PlotSVG.create( this );
-        }
-        super.setState( newState );
-    }
-    
     // Render and return the component.
     render() {
+        PlotSVG.create( this );
         PlotSVG.draw( this );
         return <svg width={this.width} height={this.height} ref={this.svgRef}></svg>
     }
@@ -47,9 +33,9 @@ class PlotSVG extends React.Component {
     
         // Create the points.
         const svg = d3.select( that.svgRef.current );
-        let sgvShape = ( that.state.shape === "circle" ) ? "circle" : "rect";
+        let sgvShape = ( that.props.shape === "circle" ) ? "circle" : "rect";
         svg.selectAll( sgvShape ).remove();
-        that.state.data.forEach(() => {
+        that.props.data.forEach(() => {
             svg.append( sgvShape )
                 .style( "fill", "none" )
                 .style( "stroke", "black" );
@@ -65,7 +51,7 @@ class PlotSVG extends React.Component {
         
         // Initialization.
         let { height, svgRef, xScale, yScale } = that,
-            { data, size, shape, opacity } = that.state;
+            { data, size, shape, opacity } = that.props;
         
         // Draw the points.  +0.5 minimizes anti-aliasing.
         let t0 = Date.now();

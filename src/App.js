@@ -10,27 +10,20 @@ class App extends React.Component {
     
     // Constructor:  Creates reference and data.
     constructor( props ) {
-        
-        // Create references.
         super( props );
-        this.plotRef0 = React.createRef();
-        this.plotRef1 = React.createRef();
-        this.plotRef2 = React.createRef();
-        this.plotRef3 = React.createRef();
-    
-        // Generate data.
-        this.data = App.generateData( 1000 );
+        this.state = { size: 4, data: App.generateData( 1000 ), opacity: 0.4 };
     }
     
     // Render and return the App.
     render() {
+        const { data, size, opacity } = this.state;
         return (
             <div className="Column">
                 <div className="Grid">
-                    <PlotCanvas data={this.data} size={4} shape={"circle"} opacity={0.4} ref={this.plotRef0}/>
-                    <PlotCanvas data={this.data} size={4} shape={"square"} opacity={0.4} ref={this.plotRef1}/>
-                    <PlotSVG    data={this.data} size={4} shape={"circle"} opacity={0.4} ref={this.plotRef2}/>
-                    <PlotSVG    data={this.data} size={4} shape={"square"} opacity={0.4} ref={this.plotRef3}/>
+                    <PlotCanvas shape={"circle"} size={size} data={data} opacity={opacity} />
+                    <PlotCanvas shape={"square"} size={size} data={data} opacity={opacity} />
+                    <PlotSVG    shape={"circle"} size={size} data={data} opacity={opacity} />
+                    <PlotSVG    shape={"square"} size={size} data={data} opacity={opacity} />
                 </div>
                 <div className="GridControls">
                     <label>Size:</label>
@@ -59,15 +52,7 @@ class App extends React.Component {
         return data;
     }
     
-    // Assigns state to all plots.
-    static setPlotStates = ( that, state ) => {
-        that.plotRef0.current.setState( state );
-        that.plotRef1.current.setState( state );
-        that.plotRef2.current.setState( state );
-        that.plotRef3.current.setState( state );
-    }
-    
-    // Returns "nice" exponential value: 1, 2, 5, etc.
+    // Returns "nice" power of specified value: 1, 2, 5, 10, etc.
     static getPower = ( value ) => {
         let m = (( value % 3 ) === 0 ) ? 1 : (( value % 3 ) === 1 ) ? 2 : 5;
         return m * ( 10 ** Math.floor( value / 3 ));
@@ -75,18 +60,17 @@ class App extends React.Component {
     
     // Assigns size.
     setSize = ( event, newValue ) => {
-        App.setPlotStates( this, { size: newValue });
-    }
-    
-    // Assigns opacity.
-    setOpacity = ( event, newValue ) => {
-        App.setPlotStates( this, { opacity: newValue });
+        this.setState({ size: newValue });
     }
     
     // Assigns data.
     setData = ( event, newValue ) => {
-        this.data = App.generateData( App.getPower( newValue ));
-        App.setPlotStates( this, { data: this.data });
+        this.setState({ data: App.generateData( App.getPower( newValue ))});
+    }
+                                      
+    // Assigns opacity.
+    setOpacity = ( event, newValue ) => {
+        this.setState({ opacity: newValue });
     }
 }
 
