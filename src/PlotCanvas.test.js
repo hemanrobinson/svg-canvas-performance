@@ -26,4 +26,6 @@ it( "creates a canvas element", () => {
         render( <canvas width="400" height="400" />, container );
     });
     expect( container.childNodes.length ).toBe( 1 );
+    let canvas = container.firstChild;
+    expect( canvas.nodeName ).toBe( "CANVAS" );
 });
