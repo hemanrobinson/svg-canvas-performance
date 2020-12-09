@@ -1,8 +1,29 @@
-import { render, screen } from '@testing-library/react';
-import PlotSVG from './PlotSVG';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-test('renders link', () => {
-  render(<PlotSVG />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from "react-dom/test-utils";
+
+import PlotSVG from "./PlotSVG";
+
+let container = null;
+
+// Sets up a DOM element as a render target.
+beforeEach(() => {
+    container = document.createElement( "div" );
+    document.body.appendChild( container );
+});
+
+// Cleans up on exit.
+afterEach(() => {
+    unmountComponentAtNode( container );
+    container.remove();
+    container = null;
+});
+
+it( "creates an svg element", () => {
+    act(() => {
+        render( <svg width="400" height="400" />, container );
+    });
+    expect( container.childNodes.length ).toBe( 1 );
 });

@@ -40,7 +40,7 @@ const App = () => {
     );
 }
     
-// Generates random normal data.
+// Generates bivariate random normal data.
 App.getData = ( newValue ) => {
     let data = [],
         f = d3.randomNormal( 0.5, 0.1 ),
@@ -51,7 +51,7 @@ App.getData = ( newValue ) => {
     return data;
 }
     
-// Returns "nice" power of ten, rounded to:  1, 2, 5, 10, 20, 50, etc.
+// Returns "nice" power of ten:  rounded to 1, 2, 5, 10, 20, 50, etc.
 App.getPower = ( exp ) => {
     let m = (( exp % 3 ) === 0 ) ? 1 : (( exp % 3 ) === 1 ) ? 2 : 5;
     return m * ( 10 ** Math.floor( exp / 3 ));

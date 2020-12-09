@@ -28,30 +28,33 @@ PlotCanvas.draw = ( width, height, ref, xScale, yScale, shape, data, size, opaci
     let t0 = Date.now(),
         canvas = ref.current,
         g = canvas.getContext( "2d" ),
+        oldAlpha;
+    if( g ) {
         oldAlpha = g.globalAlpha;
-    g.clearRect( 0, 0, width, height );
-    g.lineWidth = 1;
-    g.strokeStyle = "#000000";
-    g.globalAlpha = opacity;
-    g.beginPath();
-    data.forEach( datum => {
-        let x = Math.round( xScale( datum[ 0 ])) + 0.5,
-            y = Math.round( yScale( datum[ 1 ])) + 0.5;
-        if( shape === "circle" ) {
-            g.moveTo( x + size / 2, y );
-            g.arc( x, y, size / 2, 0, 2 * Math.PI, true );
-        } else {
-            g.strokeRect( x, y, size, size );
-        }
-    });
-    g.stroke();
-    g.globalAlpha = oldAlpha;
-    let t1 = Date.now() - t0;
-                     
-    // Draw the time.
-    g.fillStyle = "#000000";
-    g.font = "16px sans-serif";
-    g.fillText( "Canvas " + shape + "s: " + t1 + " msec", 10, height - 10 );
+        g.clearRect( 0, 0, width, height );
+        g.lineWidth = 1;
+        g.strokeStyle = "#000000";
+        g.globalAlpha = opacity;
+        g.beginPath();
+        data.forEach( datum => {
+            let x = Math.round( xScale( datum[ 0 ])) + 0.5,
+                y = Math.round( yScale( datum[ 1 ])) + 0.5;
+            if( shape === "circle" ) {
+                g.moveTo( x + size / 2, y );
+                g.arc( x, y, size / 2, 0, 2 * Math.PI, true );
+            } else {
+                g.strokeRect( x, y, size, size );
+            }
+        });
+        g.stroke();
+        g.globalAlpha = oldAlpha;
+        let t1 = Date.now() - t0;
+                         
+        // Draw the time.
+        g.fillStyle = "#000000";
+        g.font = "16px sans-serif";
+        g.fillText( "Canvas " + shape + "s: " + t1 + " msec", 10, height - 10 );
+    }
 }
 
 export default PlotCanvas;
