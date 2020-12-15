@@ -14,7 +14,7 @@ afterEach(() => {
     container = null;
 });
 
-test( "renders App with childnodes", () => {
+it( "renders App with childnodes", () => {
     
     // Test first render and componentDidMount
     act(() => {
@@ -24,7 +24,6 @@ test( "renders App with childnodes", () => {
     // Test structure.
     const div = container.querySelector( "div" );
     expect( div.className ).toBe( "Column" );
-    expect( div.childNodes.length ).toBe( 2 );
     let controls = div.childNodes[ 1 ];
     expect( controls.childNodes.length ).toBe( 6 );
     for( let i = 0; ( i < 3 ); i++ ) {

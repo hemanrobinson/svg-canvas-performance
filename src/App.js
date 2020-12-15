@@ -17,10 +17,10 @@ const App = () => {
     return (
         <div className="Column">
             <div className="GridPlots">
-                <PlotCanvas shape={"circle"} size={size} data={data} opacity={opacity} />
-                <PlotCanvas shape={"square"} size={size} data={data} opacity={opacity} />
                 <PlotSVG    shape={"circle"} size={size} data={data} opacity={opacity} />
+                <PlotCanvas shape={"circle"} size={size} data={data} opacity={opacity} />
                 <PlotSVG    shape={"square"} size={size} data={data} opacity={opacity} />
+                <PlotCanvas shape={"square"} size={size} data={data} opacity={opacity} />
             </div>
             <div className="GridControls">
                 <label>Size:</label>
@@ -36,6 +36,9 @@ const App = () => {
                     valueLabelDisplay="auto"
                     onChangeCommitted={( event, value ) => setOpacity( value )} />
             </div>
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor tempor massa. Morbi congue mi augue, a vulputate augue molestie eget. Sed egestas eros elit, ut pretium tellus pretium ut. Donec volutpat leo et neque laoreet porttitor sit amet et quam. In hac habitasse platea dictumst. Etiam eu magna tortor. Cras vel dapibus ligula, ut rutrum nibh. Morbi blandit ac elit id volutpat. Nam ut tincidunt elit. Sed fermentum lacinia magna, eget commodo leo gravida in. Suspendisse sit amet nibh magna. Cras ullamcorper libero id fermentum tincidunt. Quisque hendrerit nisl purus, non fringilla tortor fermentum a. Phasellus eleifend felis at ante porttitor tempus. Pellentesque vulputate odio vel tortor elementum blandit.
+            </p>
         </div>
     );
 }
