@@ -6,7 +6,7 @@ import './PlotSVG.css';
 const PlotSVG = ( props ) => {
     
     // Create reference and scales.
-    const width = 400, height = 400;
+    const width = 300, height = 300;
     let ref = useRef(),
         xScale = d3.scaleLinear().domain([ 0, 1 ]).range([ 0, width ]),
         yScale = d3.scaleLinear().domain([ 0, 1 ]).range([ height, 0 ]),

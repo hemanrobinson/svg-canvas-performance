@@ -36,9 +36,14 @@ const App = () => {
                     valueLabelDisplay="auto"
                     onChangeCommitted={( event, value ) => setOpacity( value )} />
             </div>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor tempor massa. Morbi congue mi augue, a vulputate augue molestie eget. Sed egestas eros elit, ut pretium tellus pretium ut. Donec volutpat leo et neque laoreet porttitor sit amet et quam. In hac habitasse platea dictumst. Etiam eu magna tortor. Cras vel dapibus ligula, ut rutrum nibh. Morbi blandit ac elit id volutpat. Nam ut tincidunt elit. Sed fermentum lacinia magna, eget commodo leo gravida in. Suspendisse sit amet nibh magna. Cras ullamcorper libero id fermentum tincidunt. Quisque hendrerit nisl purus, non fringilla tortor fermentum a. Phasellus eleifend felis at ante porttitor tempus. Pellentesque vulputate odio vel tortor elementum blandit.
-            </p>
+            <div className="Description">
+                <p>
+                Performance of SVG elements versus Canvas pixels is comparable up to a few thousand points.  Beyond that, the large number of SVG elements slows processing, particularly during user interactions.
+                </p>
+                <p>
+                Adjusting size and opacity can show the structure of the data, even in dense scatter plots.  The Canvas element supports plots of <a href="https://www.highcharts.com/demo/android/scatter-boost">1,000,000 points</a> in modern browsers.
+                </p>
+            </div>
         </div>
     );
 }
