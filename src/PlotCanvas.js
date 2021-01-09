@@ -53,7 +53,7 @@ PlotCanvas.draw = ( width, height, ref, xScale, yScale, shape, data, size, opaci
         // Draw the time.
         g.fillStyle = "#000000";
         g.font = "16px sans-serif";
-        g.fillText( "Canvas " + shape + "s: " + t1 + " msec", 10, height - 10 );
+        g.fillText( "CANVAS " + shape + "s: " + t1 + " msec", 10, height - 10 );
     }
 }
 

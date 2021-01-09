@@ -38,10 +38,10 @@ const App = () => {
             </div>
             <div className="Description">
                 <p>
-                Performance of SVG elements versus Canvas pixels is comparable up to a few thousand points.  Beyond that, the large number of SVG elements slows processing, particularly during user interactions.
+                Performance of SVG elements versus CANVAS pixels is comparable up to a few thousand points.  Beyond that, the large number of SVG elements slows processing, particularly during user interactions such as brushing.
                 </p>
                 <p>
-                Adjusting size and opacity can show the structure of the data, even in dense scatter plots.  The Canvas element supports plots of <a href="https://www.highcharts.com/demo/android/scatter-boost">1,000,000 points</a> in modern browsers.
+                Adjusting size and opacity can show the structure of the data, even in dense scatter plots.  The CANVAS element supports plots of <a href="https://www.highcharts.com/demo/android/scatter-boost">1,000,000 points</a> in modern browsers.
                 </p>
             </div>
         </div>
