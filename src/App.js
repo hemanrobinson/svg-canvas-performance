@@ -38,10 +38,10 @@ const App = () => {
             </div>
             <div className="Description">
                 <p>
-                Performance of SVG elements versus CANVAS pixels is comparable up to a few thousand points.  Beyond that, the large number of SVG elements slows processing, particularly during user interactions such as brushing.
+                Scatter plots have been used to display up to 1,000,000 data points (for example, <a href="https://www.highcharts.com/demo/android/scatter-boost">here</a> and <a href="https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html">here</a>.  With suitably adjusted point size and opacity, these plots are superior to contour plots because they show both the structure of the data and the individual points.
                 </p>
                 <p>
-                Adjusting size and opacity can show the structure of the data, even in dense scatter plots.  The CANVAS element supports plots of <a href="https://www.highcharts.com/demo/android/scatter-boost">1,000,000 points</a> in modern browsers.
+                Even in modern browsers, the SVG element cannot support such large data sets.  This type of plot requires a CANVAS element.  The performance difference becomes critical during user interactions such as brushing.
                 </p>
             </div>
         </div>
