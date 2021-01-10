@@ -5,7 +5,9 @@ import PlotCanvas from './PlotCanvas';
 import PlotSVG from './PlotSVG';
 import './App.css';
 
-// Application:  A grid of performance tests.
+/**
+ * A grid of performance tests.
+ */
 const App = () => {
     
     // Create state.
@@ -47,19 +49,28 @@ const App = () => {
         </div>
     );
 }
-    
-// Generates bivariate random normal data.
-App.getData = ( newValue ) => {
+
+/**
+ * Generates bivariate random normal data.
+ *
+ * @param  {number}  n  number of values
+ * @return {Array}  Array of x, y values between 0 and 1
+ */
+App.getData = ( n ) => {
     let data = [],
-        f = d3.randomNormal( 0.5, 0.1 ),
-        n = newValue;
+        f = d3.randomNormal( 0.5, 0.1 );
     for( let i = 0; ( i < n ); i++ ) {
         data[ i ] = [ f(), f()];
     }
     return data;
 }
-    
-// Returns "nice" power of ten:  rounded to 1, 2, 5, 10, 20, 50, etc.
+
+/**
+ * Returns "nice" power of ten:  rounded to 1, 2, 5, 10, 20, 50, etc.
+ *
+ * @param  {number}  exp  exponent
+ * @return {number}  "nice" power of ten:  rounded to 1, 2, 5, 10, 20, 50, etc.
+ */
 App.getPower = ( exp ) => {
     let m = (( exp % 3 ) === 0 ) ? 1 : (( exp % 3 ) === 1 ) ? 2 : 5;
     return m * ( 10 ** Math.floor( exp / 3 ));

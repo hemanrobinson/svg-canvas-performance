@@ -2,7 +2,12 @@ import React, { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 import './PlotSVG.css';
 
-// Scatter plot in an SVG element.
+/**
+ * Scatter plot in an SVG element.
+ *
+ * @param  {Object}  props  properties
+ * @return component
+ */
 const PlotSVG = ( props ) => {
     
     // Create reference and scales.
@@ -20,8 +25,19 @@ const PlotSVG = ( props ) => {
     // Return the component.
     return <svg width={width} height={height} ref={ref}></svg>;
 };
-    
-// Draws the points and the time.
+
+/**
+ * Draws the points and the time.
+ *
+ * @param {number}     height   height in pixels
+ * @param {Array}      ref      reference to SVG element
+ * @param {d3.scale*}  xScale   X scale
+ * @param {d3.scale*}  yScale   Y scale
+ * @param {string}     shape    one of "circle", "square"
+ * @param {Array}      data     Array of x, y values between 0 and 1
+ * @param {number}     size     size in pixels
+ * @param {number}     opacity  one of "circle", "square"
+ */
 PlotSVG.draw = ( height, ref, xScale, yScale, shape, data, size, opacity ) => {
     
     // If the data changed, re-create the SVG elements.  +0.5 minimizes anti-aliasing.

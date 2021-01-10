@@ -2,7 +2,12 @@ import React, { useRef, useEffect }  from 'react';
 import * as d3 from 'd3';
 import './PlotCanvas.css';
 
-// Scatter plot in a Canvas element.
+/**
+ * Scatter plot in a CANVAS element.
+ *
+ * @param  {Object}  props  properties
+ * @return component
+ */
 const PlotCanvas = ( props ) => {
     
     // Create reference and scales.
@@ -21,7 +26,19 @@ const PlotCanvas = ( props ) => {
     return <canvas width={width} height={height} ref={ref}></canvas>;
 }
 
-// Draws the points and the time.
+/**
+ * Draws the points and the time.
+ *
+ * @param {number}     width    width in pixels
+ * @param {number}     height   height in pixels
+ * @param {Array}      ref      reference to SVG element
+ * @param {d3.scale*}  xScale   X scale
+ * @param {d3.scale*}  yScale   Y scale
+ * @param {string}     shape    one of "circle", "square"
+ * @param {Array}      data     Array of x, y values between 0 and 1
+ * @param {number}     size     size in pixels
+ * @param {number}     opacity  one of "circle", "square"
+ */
 PlotCanvas.draw = ( width, height, ref, xScale, yScale, shape, data, size, opacity ) => {
     
     // Draw the points.  +0.5 minimizes anti-aliasing.
