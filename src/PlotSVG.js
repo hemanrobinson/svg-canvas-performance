@@ -17,7 +17,7 @@ const PlotSVG = ( props ) => {
         yScale = d3.scaleLinear().domain([ 0, 1 ]).range([ height, 0 ]),
         { shape, data, size, opacity } = props;
     
-    // Hook to draw on mounting, or on any other lifecycle update.
+    // Set hook to draw on mounting.
     useEffect(() => {
         PlotSVG.draw( height, ref, xScale, yScale, shape, data, size, opacity );
     });
