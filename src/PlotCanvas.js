@@ -52,8 +52,8 @@ PlotCanvas.draw = ( width, height, ref, xScale, yScale, shape, data, size, opaci
         g.lineWidth = 1;
         g.strokeStyle = "#000000";
         g.globalAlpha = opacity;
-        g.beginPath();
         data.forEach( datum => {
+            g.beginPath();
             let x = Math.round( xScale( datum[ 0 ])) + 0.5,
                 y = Math.round( yScale( datum[ 1 ])) + 0.5;
             if( shape === "circle" ) {
@@ -62,8 +62,8 @@ PlotCanvas.draw = ( width, height, ref, xScale, yScale, shape, data, size, opaci
             } else {
                 g.strokeRect( x, y, size, size );
             }
+            g.stroke();
         });
-        g.stroke();
         g.globalAlpha = oldAlpha;
         let t1 = Date.now() - t0;
                          
