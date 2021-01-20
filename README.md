@@ -1,4 +1,4 @@
-# Scatter Plot Performance
+# SVG versus CANVAS
 
 Scatter plots have been used to display up to 1,000,000 data points (for example, [here](https://www.highcharts.com/demo/android/scatter-boost) and [here](https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html)).  
 
