@@ -6,4 +6,6 @@ The SVG element cannot support such large data sets.  The performance difference
 
 [This project demonstrates scatter plot drawing performance in SVG and CANVAS elements.](https://hemanrobinson.github.io/svg-canvas/)
 
+[![SVG versus CANVAS](src/svgcanvas.png "SVG versus CANVAS")](https://hemanrobinson.github.io/svgcanvas/)
+
 This project uses [d3](https://github.com/d3/d3) and [Material-UI](https://github.com/mui-org/material-ui), and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
