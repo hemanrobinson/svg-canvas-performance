@@ -29,8 +29,8 @@ const PlotCanvas = ( props ) => {
 /**
  * Draws the points and the time.
  *
- * @param {number}     width    width in pixels
- * @param {number}     height   height in pixels
+ * @param {number}     width    width, in pixels
+ * @param {number}     height   height, in pixels
  * @param {Array}      ref      reference to SVG element
  * @param {d3.scale*}  xScale   X scale
  * @param {d3.scale*}  yScale   Y scale
@@ -40,15 +40,18 @@ const PlotCanvas = ( props ) => {
  * @param {number}     opacity  one of "circle", "square"
  */
 PlotCanvas.draw = ( width, height, ref, xScale, yScale, shape, data, size, opacity ) => {
-    
-    // Draw the points.  +0.5 minimizes anti-aliasing.
+
+    // Initialization.
     let t0 = Date.now(),
         canvas = ref.current,
         g = canvas.getContext( "2d" ),
         oldAlpha;
+    
+    // Draw the points.  +0.5 minimizes anti-aliasing.
     if( g ) {
         oldAlpha = g.globalAlpha;
-        g.clearRect( 0, 0, width, height );
+        g.fillStyle = "#ffffff";
+        g.fillRect( 0, 0, width, height );
         g.lineWidth = 1;
         g.strokeStyle = "#000000";
         g.globalAlpha = opacity;
