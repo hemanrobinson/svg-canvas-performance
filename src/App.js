@@ -18,6 +18,9 @@ const App = () => {
     // Return the App.
     return (
         <div className="Column">
+            <div className="Description">
+                <h1>SVG Versus CANVAS</h1>
+            </div>
             <div className="GridPlots">
                 <PlotSVG    shape={"circle"} size={size} data={data} opacity={opacity} />
                 <PlotCanvas shape={"circle"} size={size} data={data} opacity={opacity} />
