@@ -22,8 +22,6 @@ const App = () => {
                 <h1>SVG Versus CANVAS</h1>
             </div>
             <div className="GridPlots">
-                <PlotSVG    shape={"circle"} size={size} data={data} opacity={opacity} />
-                <PlotCanvas shape={"circle"} size={size} data={data} opacity={opacity} />
                 <PlotSVG    shape={"square"} size={size} data={data} opacity={opacity} />
                 <PlotCanvas shape={"square"} size={size} data={data} opacity={opacity} />
             </div>
