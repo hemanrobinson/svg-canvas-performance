@@ -47,6 +47,7 @@ const App = () => {
                 Even in modern browsers, the SVG element cannot support such large data sets.  This type of plot requires a CANVAS element.  The performance difference becomes critical during user interactions such as brushing.
                 </p>
             </div>
+            <a href="https://github.com/hemanrobinson/svg-canvas/">Shared on GitHub</a>
         </div>
     );
 }
