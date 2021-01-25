@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as d3 from 'd3';
 
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
@@ -26,4 +27,12 @@ it( "creates an svg element", () => {
         render( <svg width="400" height="400" />, container );
     });
     expect( container.childNodes.length ).toBe( 1 );
+});
+
+it( "draws the Plot", () => {
+    let ref = { current: document.createElement( "svg" )},
+        xScale = d3.scaleLinear().domain([ 0, 1 ]).range([ 0, 100 ]),
+        yScale = d3.scaleLinear().domain([ 0, 1 ]).range([ 0, 100 ]);
+    PlotSVG.draw( 400, ref, xScale, yScale, "circle", [[ 0, 1 ]], 4, 1.0 );
+    PlotSVG.draw( 400, ref, xScale, yScale, "square", [[ 0, 1 ]], 4, 1.0 );
 });
