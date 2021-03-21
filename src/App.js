@@ -13,7 +13,7 @@ const App = () => {
     // Create state.
     const [ size, setSize ] = useState( 4 );
     const [ data, setData ] = useState( App.getData( App.getPower( 9 )));
-    const [ opacity, setOpacity ] = useState( 0.4 );
+    const [ opacity, setOpacity ] = useState( 0.5 );
     
     // Return the App.
     return (
@@ -34,10 +34,10 @@ const App = () => {
                 <Slider defaultValue={ 9 } step={ 1 } min={ 0 } max={ 15 }
                     valueLabelDisplay="auto" marks valueLabelFormat={( value ) => App.getPower( value )}
                     onChangeCommitted={( event, value ) => setData( App.getData( App.getPower( value )))} />
-                <label>Opacity:</label>
-                <Slider defaultValue={ 0.4 } step={ 0.01 } min={ 0 } max={ 1 }
+                <label>Transparency:</label>
+                <Slider defaultValue={ 0.5 } step={ 0.01 } min={ 0 } max={ 1 }
                     valueLabelDisplay="auto"
-                    onChangeCommitted={( event, value ) => setOpacity( value )} />
+                    onChangeCommitted={( event, value ) => setOpacity( 1 - value )} />
             </div>
             <div className="Description">
                 <p>

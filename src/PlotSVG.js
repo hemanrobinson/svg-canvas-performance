@@ -11,7 +11,7 @@ import './PlotSVG.css';
 const PlotSVG = ( props ) => {
     
     // Create reference and scales.
-    const width = 300, height = 300;
+    const width = 1200, height = 1200;
     let ref = useRef(),
         xScale = d3.scaleLinear().domain([ 0, 1 ]).range([ 0, width ]),
         yScale = d3.scaleLinear().domain([ 0, 1 ]).range([ height, 0 ]),
@@ -36,7 +36,7 @@ const PlotSVG = ( props ) => {
  * @param {string}     shape    one of "circle", "square"
  * @param {Array}      data     Array of x, y values between 0 and 1
  * @param {number}     size     size in pixels
- * @param {number}     opacity  one of "circle", "square"
+ * @param {number}     opacity  alpha, between 0 and 1
  */
 PlotSVG.draw = ( height, ref, xScale, yScale, shape, data, size, opacity ) => {
     
