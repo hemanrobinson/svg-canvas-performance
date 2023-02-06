@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Slider } from '@material-ui/core';
+import { Slider } from '@mui/material';
 import * as d3 from 'd3';
 import PlotCanvas from './PlotCanvas';
 import PlotSVG from './PlotSVG';
