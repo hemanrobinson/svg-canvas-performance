@@ -3,6 +3,10 @@ div {
     text-align: center;
     gap: 10px;
 }
+img.icon {
+    border: 0;
+    height: 24px;
+}
 .Description {
     text-align: left;
     max-width: 1000px;
