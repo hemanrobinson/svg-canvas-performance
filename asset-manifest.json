@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/svg-canvas/static/css/main.7566d0de.css",
-    "main.js": "/svg-canvas/static/js/main.4eb89fee.js",
+    "main.js": "/svg-canvas/static/js/main.64b430ff.js",
     "static/media/github.svg": "/svg-canvas/static/media/github.6fa18895f6e6c7772cab7049f7e05f59.svg",
     "index.html": "/svg-canvas/index.html",
     "main.7566d0de.css.map": "/svg-canvas/static/css/main.7566d0de.css.map",
-    "main.4eb89fee.js.map": "/svg-canvas/static/js/main.4eb89fee.js.map"
+    "main.64b430ff.js.map": "/svg-canvas/static/js/main.64b430ff.js.map"
   },
   "entrypoints": [
     "static/css/main.7566d0de.css",
-    "static/js/main.4eb89fee.js"
+    "static/js/main.64b430ff.js"
   ]
 }
