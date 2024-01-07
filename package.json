@@ -4,7 +4,10 @@
   "private": true,
   "homepage": "https://hemanrobinson.github.io/svg-canvas",
   "dependencies": {
-    "@material-ui/core": "^4.11.2",
+    "@babel/core": "^7.20.12",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.7",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
