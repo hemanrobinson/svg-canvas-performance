@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F87E23F42576B60E00F41CC5"
-               BuildableName = "svg-canvas"
-               BlueprintName = "svg-canvas"
-               ReferencedContainer = "container:svg-canvas.xcodeproj">
+               BuildableName = "svg-canvas-performance"
+               BlueprintName = "svg-canvas-performance"
+               ReferencedContainer = "container:svg-canvas-performance.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -51,9 +51,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F87E23F42576B60E00F41CC5"
-            BuildableName = "svg-canvas"
-            BlueprintName = "svg-canvas"
-            ReferencedContainer = "container:svg-canvas.xcodeproj">
+            BuildableName = "svg-canvas-performance"
+            BlueprintName = "svg-canvas-performance"
+            ReferencedContainer = "container:svg-canvas-performance.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

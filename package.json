@@ -1,8 +1,8 @@
 {
-  "name": "svg-canvas",
+  "name": "svg-canvas-performance",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://hemanrobinson.github.io/svg-canvas",
+  "homepage": "https://hemanrobinson.github.io/svg-canvas-performance",
   "dependencies": {
     "@babel/core": "^7.20.12",
     "@emotion/react": "^11.10.5",
@@ -19,6 +19,11 @@
     "react-scripts": "^5.0.1",
     "typescript": "^4.1.2",
     "web-vitals": "^0.2.4"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!d3|d3-array|internmap|delaunator|robust-predicates)"
+    ]
   },
   "scripts": {
     "predeploy": "npm run build",

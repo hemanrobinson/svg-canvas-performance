@@ -6,6 +6,6 @@ Scatter plots have been used to display up to 1,000,000 data points (for example
 
 The SVG element cannot support such large data sets.  The performance difference between SVG and CANVAS becomes critical during user interactions such as brushing.
 
-[![SVG versus CANVAS](src/svgcanvas.png "SVG versus CANVAS Performance")](https://hemanrobinson.github.io/svg-canvas/)
+[![SVG versus CANVAS](src/svg-canvas-performance.png "SVG versus CANVAS Performance")](https://hemanrobinson.github.io/svg-canvas/)
 
 This project uses [d3](https://github.com/d3/d3) and [Material-UI](https://github.com/mui-org/material-ui), and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
