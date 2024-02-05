@@ -1,6 +1,6 @@
 {
-  "short_name": "SVG versus CANVAS",
-  "name": "SVG versus CANVAS",
+  "short_name": "SVG versus CANVAS Performance",
+  "name": "SVG versus CANVAS Performance",
     "icons": [{
         "src": "favicon.ico",
         "sizes": "48x48 32x32 24x24 16x16",

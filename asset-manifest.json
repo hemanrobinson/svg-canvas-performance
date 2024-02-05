@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/svg-canvas/static/css/main.7566d0de.css",
-    "main.js": "/svg-canvas/static/js/main.f0cb5e52.js",
-    "static/media/github.svg": "/svg-canvas/static/media/github.6fa18895f6e6c7772cab7049f7e05f59.svg",
-    "index.html": "/svg-canvas/index.html",
-    "main.7566d0de.css.map": "/svg-canvas/static/css/main.7566d0de.css.map",
-    "main.f0cb5e52.js.map": "/svg-canvas/static/js/main.f0cb5e52.js.map"
+    "main.css": "/svg-canvas-performance/static/css/main.f5cf0333.css",
+    "main.js": "/svg-canvas-performance/static/js/main.a4c59e0b.js",
+    "static/media/github.svg": "/svg-canvas-performance/static/media/github.6fa18895f6e6c7772cab7049f7e05f59.svg",
+    "index.html": "/svg-canvas-performance/index.html",
+    "main.f5cf0333.css.map": "/svg-canvas-performance/static/css/main.f5cf0333.css.map",
+    "main.a4c59e0b.js.map": "/svg-canvas-performance/static/js/main.a4c59e0b.js.map"
   },
   "entrypoints": [
-    "static/css/main.7566d0de.css",
-    "static/js/main.f0cb5e52.js"
+    "static/css/main.f5cf0333.css",
+    "static/js/main.a4c59e0b.js"
   ]
 }
