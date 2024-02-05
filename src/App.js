@@ -20,12 +20,15 @@ const App = () => {
     return (
         <div className="Column">
             <div className="Description">
-                <h1>SVG Versus CANVAS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/hemanrobinson/svg-canvas/"><img className="icon" title="Code Shared on GitHub" alt="Code Shared on GitHub" src={github}/></a></h1>
+                <h1>SVG versus CANVAS Performance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/hemanrobinson/svg-canvas/"><img className="icon" title="Code Shared on GitHub" alt="Code Shared on GitHub" src={github}/></a></h1>
                 <p>
-                Scatter plots have been used to display up to 1,000,000 data points (for example, <a href="https://www.highcharts.com/demo/android/scatter-boost">here</a> and <a href="https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html">here</a>).  With suitably adjusted point size and opacity, scatter plots are superior to contour plots because they show both the structure of the data and the individual points.
+                Scatter plots have been used to display up to 1,000,000 data points (for example, <a href="https://www.highcharts.com/demo/android/scatter-boost">here</a> and <a href="https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html">here</a>).
                 </p>
                 <p>
-                Even in modern browsers, the SVG element cannot support such large data sets.  This type of plot requires a CANVAS element.  The performance difference becomes critical during user interactions such as brushing.
+                Even in modern browsers, the SVG element cannot support such large data sets. This requires a CANVAS element. The performance difference becomes critical during user interactions such as brushing.
+                </p>
+                <p>
+                Use the sliders below the plots to explore performance under different conditions.
                 </p>
             </div>
             <div className="GridPlots">
@@ -45,6 +48,12 @@ const App = () => {
                 <Slider defaultValue={ 0.5 } step={ 0.01 } min={ 0 } max={ 1 }
                     valueLabelDisplay="auto"
                     onChangeCommitted={( event, value ) => setOpacity( 1 - value )} />
+            </div>
+            <div className="Description">
+                <h2>Usability</h2>
+                <p>
+                Traditionally, dense point clouds are displayed in contour plots. With suitably adjusted point size and transparency, scatter plots are superior because they show both the structure of the data and the individual points.
+                </p>
             </div>
         </div>
     );

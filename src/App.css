@@ -3,6 +3,12 @@ div {
     text-align: center;
     gap: 10px;
 }
+h2 {
+    padding-top: 10px;
+}
+img {
+    border: 1px solid #939ba1;
+}
 img.icon {
     border: 0;
     height: 24px;
@@ -21,6 +27,7 @@ img.icon {
     grid-template-columns: repeat( 2, 1fr );
     justify-items: center;
     margin: 0 auto;
+    padding: 5px 0;
 }
 .GridControls {
     display: grid;
@@ -28,4 +35,5 @@ img.icon {
     align-items: center;
     justify-items: right;
     justify-content: center;
+    padding: 5px 0;
 }

@@ -1,4 +1,4 @@
-# SVG versus CANVAS
+# SVG versus CANVAS Performance
 
 [This project demonstrates scatter plot drawing performance in SVG and CANVAS elements.](https://hemanrobinson.github.io/svg-canvas/)
 
