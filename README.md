@@ -8,4 +8,4 @@ The SVG element cannot support such large data sets.  The performance difference
 
 [![SVG versus CANVAS](src/svg-canvas-performance.png "SVG versus CANVAS Performance")](https://hemanrobinson.github.io/svg-canvas-performance/)
 
-This project uses [d3](https://github.com/d3/d3) and [Material-UI](https://github.com/mui-org/material-ui), and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project uses [React](https://react.dev), [Material-UI](https://github.com/mui-org/material-ui), and [d3](https://github.com/d3/d3).

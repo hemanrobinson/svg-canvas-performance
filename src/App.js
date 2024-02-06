@@ -28,7 +28,7 @@ const App = () => {
                 Even in modern browsers, the SVG element cannot support such large data sets. This requires a CANVAS element. The performance difference becomes critical during user interactions such as brushing.
                 </p>
                 <p>
-                Use the sliders below the plots to explore performance under different conditions.
+                Use the sliders to adjust the point size, the number of points, and their transparency.
                 </p>
             </div>
             <div className="GridPlots">
@@ -53,6 +53,10 @@ const App = () => {
                 <h2>Usability</h2>
                 <p>
                 Traditionally, dense point clouds are displayed in contour plots. With suitably adjusted point size and transparency, scatter plots are superior because they show both the structure of the data and the individual points.
+                </p>
+                <h2>Implementation</h2>
+                <p>
+                This project uses <a href="https://react.dev">React</a>, <a href="https://github.com/mui-org/material-ui">Material-UI</a>, and <a href="https://github.com/d3/d3">d3</a>.
                 </p>
             </div>
         </div>
