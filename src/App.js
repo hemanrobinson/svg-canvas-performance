@@ -50,7 +50,7 @@ const App = () => {
                     onChangeCommitted={( event, value ) => setOpacity( 1 - value )} />
             </div>
             <div className="Description">
-                <h2>Usability</h2>
+                <h2>User Interface</h2>
                 <p>
                 Traditionally, dense point clouds are displayed in contour plots. With suitably adjusted point size and transparency, scatter plots are superior because they show both the structure of the data and the individual points.
                 </p>
