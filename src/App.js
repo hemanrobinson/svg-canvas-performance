@@ -25,7 +25,7 @@ const App = () => {
                 Scatter plots have been used to display up to 1,000,000 data points (for example, <a href="https://www.highcharts.com/demo/android/scatter-boost">here</a> and <a href="https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html">here</a>).
                 </p>
                 <p>
-                Even in modern browsers, the SVG element cannot support such large data sets. This requires a CANVAS element. The performance difference becomes critical during user interactions such as brushing.
+                The SVG element cannot efficiently render such large data sets. This requires a CANVAS element. The performance difference becomes critical during user interactions such as <a href="https://hemanrobinson.github.io/fast-brushing/">brushing</a>.
                 </p>
                 <p>
                 Use the sliders to adjust the point size, the number of points, and their transparency.
