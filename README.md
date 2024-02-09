@@ -6,4 +6,4 @@ The SVG element cannot support such large data sets.  The performance difference
 
 [This project compares scatter plot rendering performance in SVG and CANVAS elements.](https://hemanrobinson.github.io/svg-canvas-performance/)
 
-[![SVG versus CANVAS](src/svg-canvas-performance.png "SVG versus CANVAS Performance")](https://hemanrobinson.github.io/svg-canvas-performance/)
+[![SVG versus CANVAS](public/svg-canvas-performance-small.png "SVG versus CANVAS Performance")](https://hemanrobinson.github.io/svg-canvas-performance/)

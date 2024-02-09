@@ -20,7 +20,7 @@ const App = () => {
     return (
         <div className="Column">
             <div className="Description">
-                <h1>SVG versus CANVAS Performance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/hemanrobinson/svg-canvas/"><img className="icon" title="Code Shared on GitHub" alt="Code Shared on GitHub" src={github}/></a></h1>
+                <h1>SVG versus CANVAS Performance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/hemanrobinson/svg-canvas-performance/"><img className="icon" title="Code Shared on GitHub" alt="Code Shared on GitHub" src={github}/></a></h1>
                 <p>
                 Scatter plots have been used to display up to 1,000,000 data points (for example, <a href="https://www.highcharts.com/demo/android/scatter-boost">here</a> and <a href="https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html">here</a>).
                 </p>
