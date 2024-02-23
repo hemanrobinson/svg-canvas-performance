@@ -67,7 +67,7 @@ const App = () => {
                 This project uses <a href="https://react.dev">React</a>, <a href="https://github.com/mui-org/material-ui">Material-UI</a>, and <a href="https://github.com/d3/d3">d3</a>.
                 </p>
                 <p>
-                For SVG elements, this test does not measure creation time. Rendering time is all that matters during interactions.
+                This test does not measure creation time of SVG elements. Rendering time is all that matters during interactions.
                 </p>
             </div>
         </div>
