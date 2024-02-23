@@ -31,7 +31,7 @@ it( "renders App with childnodes", () => {
     expect( div.childNodes[ 3 ].className ).toBe( "Description" );
     
     let controls = div.childNodes[ 2 ];
-    expect( controls.childNodes.length ).toBe( 6 );
+    expect( controls.childNodes.length ).toBe( 8 );
     for( let i = 0; ( i < 3 ); i++ ) {
         let label = controls.childNodes[ 2 * i ];
         expect( label.nodeName ).toBe( "LABEL" );

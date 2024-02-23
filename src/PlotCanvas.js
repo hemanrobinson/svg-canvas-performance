@@ -34,7 +34,7 @@ const PlotCanvas = ( props ) => {
  * @param {Array}      ref      reference to SVG element
  * @param {d3.scale*}  xScale   X scale
  * @param {d3.scale*}  yScale   Y scale
- * @param {string}     shape    one of "circle", "square"
+ * @param {string}     shape    one of "circle", "square", "line"
  * @param {Array}      data     Array of x, y values between 0 and 1
  * @param {number}     size     size in pixels
  * @param {number}     opacity  alpha, between 0 and 1
@@ -57,13 +57,20 @@ PlotCanvas.draw = ( width, height, ref, xScale, yScale, shape, data, size, opaci
         g.globalAlpha = opacity;
         data.forEach( datum => {
             g.beginPath();
-            let x = Math.round( xScale( datum[ 0 ])) + 0.5,
-                y = Math.round( yScale( datum[ 1 ])) + 0.5;
-            if( shape === "circle" ) {
-                g.moveTo( x + size / 2, y );
-                g.arc( x, y, size / 2, 0, 2 * Math.PI, true );
-            } else {
-                g.strokeRect( x, y, size, size );
+            let x = xScale( datum[ 0 ]),
+                y = yScale( datum[ 1 ]);
+            switch( shape ) {
+                case "circle":
+                    g.moveTo( x + size / 2, y );
+                    g.arc( x, y, size / 2, 0, 2 * Math.PI, true );
+                    break;
+                case "square":
+                    g.strokeRect( Math.round( x ) + 0.5, Math.round( y ) + 0.5, size, size );
+                    break;
+                default:
+                    g.moveTo( Math.round( x + size / 2 ), Math.round( y - size / 2 ) + 0.5 );
+                    g.lineTo( Math.round( x - size / 2 ), Math.round( y + size / 2 ) + 0.5 );
+                    break;
             }
             g.stroke();
         });

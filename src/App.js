@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Slider } from '@mui/material';
+import { Slider, Select, MenuItem } from '@mui/material';
 import * as d3 from 'd3';
 import PlotCanvas from './PlotCanvas';
 import PlotSVG from './PlotSVG';
@@ -12,6 +12,7 @@ import github from './github.svg';
 const App = () => {
     
     // Create state.
+    const [ shape, setShape ] = useState( "square" );
     const [ size, setSize ] = useState( 4 );
     const [ data, setData ] = useState( App.getData( App.getPower( 9 )));
     const [ opacity, setOpacity ] = useState( 0.5 );
@@ -28,12 +29,12 @@ const App = () => {
                 The SVG element cannot efficiently render such large data sets. This requires a CANVAS element. The performance difference becomes critical during user interactions such as <a href="https://hemanrobinson.github.io/fast-brushing/">brushing</a>.
                 </p>
                 <p>
-                Use the sliders to adjust the point size, the number of points, and their transparency.
+                Use the sliders to adjust the point size, the number of points, their transparency, and their shape.
                 </p>
             </div>
             <div className="GridPlots">
-                <PlotSVG    shape={"square"} size={size} data={data} opacity={opacity} />
-                <PlotCanvas shape={"square"} size={size} data={data} opacity={opacity} />
+                <PlotSVG    size={size} data={data} opacity={opacity} shape={shape} />
+                <PlotCanvas size={size} data={data} opacity={opacity} shape={shape} />
             </div>
             <div className="GridControls">
                 <label>Size:</label>
@@ -48,6 +49,13 @@ const App = () => {
                 <Slider defaultValue={ 0.5 } step={ 0.01 } min={ 0 } max={ 1 }
                     valueLabelDisplay="auto"
                     onChangeCommitted={( event, value ) => setOpacity( 1 - value )} />
+                <label>Shape:</label>
+                <Select variant="standard" value={ shape } style={{minWidth: 200, backgroundColor: "#ffffff"}}
+                    onChange={( event ) => { setShape( event.target.value )}}>
+                    <MenuItem value="circle">Circle</MenuItem>
+                    <MenuItem value="square">Square</MenuItem>
+                    <MenuItem value="line">Line</MenuItem>
+                </Select>
             </div>
             <div className="Description">
                 <h2>User Interface</h2>
@@ -57,6 +65,9 @@ const App = () => {
                 <h2>Implementation</h2>
                 <p>
                 This project uses <a href="https://react.dev">React</a>, <a href="https://github.com/mui-org/material-ui">Material-UI</a>, and <a href="https://github.com/d3/d3">d3</a>.
+                </p>
+                <p>
+                For SVG elements, this test does not measure creation time. Rendering time is all that matters during interactions.
                 </p>
             </div>
         </div>
