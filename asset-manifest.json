@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/svg-canvas-performance/static/css/main.5720dce5.css",
+    "main.css": "/svg-canvas-performance/static/css/main.bf07f874.css",
     "main.js": "/svg-canvas-performance/static/js/main.5c5d4aca.js",
     "static/media/github.svg": "/svg-canvas-performance/static/media/github.6fa18895f6e6c7772cab7049f7e05f59.svg",
     "index.html": "/svg-canvas-performance/index.html",
-    "main.5720dce5.css.map": "/svg-canvas-performance/static/css/main.5720dce5.css.map",
+    "main.bf07f874.css.map": "/svg-canvas-performance/static/css/main.bf07f874.css.map",
     "main.5c5d4aca.js.map": "/svg-canvas-performance/static/js/main.5c5d4aca.js.map"
   },
   "entrypoints": [
-    "static/css/main.5720dce5.css",
+    "static/css/main.bf07f874.css",
     "static/js/main.5c5d4aca.js"
   ]
 }
